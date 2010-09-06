@@ -27,6 +27,9 @@
 require 'mkmf'
 
 $CFLAGS << ' -Wall '
+if `/usr/bin/uname -r`.to_i == 10 # darwin 10 => Mac OS X 10.6
+$CFLAGS << ' -DRB_ID=ID'
+end
 $LDFLAGS = '-framework Carbon -framework ApplicationServices'
 
 exit 1 unless have_func('OSACopyScriptingDefinition')
