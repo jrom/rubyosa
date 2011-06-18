@@ -467,9 +467,7 @@ module OSA
   def self.__load_sdef__(sdef, target, app_module, merge_only=false, app_class=nil)
     # Load the sdef.
     doc = if USE_LIBXML
-      parser = XML::Parser.new
-      parser.string = sdef
-      parser.parse
+      XML::Parser.string(sdef).parse
     else
       REXML::Document.new(sdef)
     end
