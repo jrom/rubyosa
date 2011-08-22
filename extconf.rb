@@ -27,8 +27,8 @@
 require 'mkmf'
 
 $CFLAGS << ' -Wall '
-if `/usr/bin/uname -r`.to_i == 10 # darwin 10 => Mac OS X 10.6
-$CFLAGS << ' -DRB_ID=ID'
+if `/usr/bin/uname -r`.to_i >= 10 # darwin 10 => Mac OS X 10.6, 11 => Mac OS X 10.7
+  $CFLAGS << ' -DRB_ID=ID'
 end
 $LDFLAGS = '-framework Carbon -framework ApplicationServices'
 
